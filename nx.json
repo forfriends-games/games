@@ -1,0 +1,24 @@
+{
+  "npmScope": "games",
+  "implicitDependencies": {
+    "workspace.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "web": {
+      "tags": []
+    },
+    "web-e2e": {
+      "tags": []
+    },
+    "api": {
+      "tags": []
+    },
+    "data": {
+      "tags": []
+    }
+  }
+}
