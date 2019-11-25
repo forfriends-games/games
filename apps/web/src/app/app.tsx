@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React from 'react';
+import React, { useState } from 'react';
 import { Global, jsx } from '@emotion/core';
 import { useTheme, makeStyles, createStyles } from '@material-ui/styles';
 import {
@@ -46,7 +46,7 @@ export const App = () => {
   );
   const classes = useStyles({});
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
     setOpen(true);
@@ -56,13 +56,37 @@ export const App = () => {
     setOpen(false);
   };
 
-  const setPlayers = ev => {
-    gameConfig.numOfPlayers = ev.currentTarget.dataset.num_of_players;
-    console.log(gameConfig);
-    return true;
-  }
+  const setPlayers = newNumberOfPlayers => {
+    setGameConfig({...gameConfig, numOfPlayers: newNumberOfPlayers });
+  };
 
-  var gameConfig = {
+  const teamConfig = [{
+    total: 5,
+    good: 3,
+    bad: 2
+  }, {
+    total: 6,
+    good: 4,
+    bad: 2
+  }, {
+    total: 7,
+    good: 4,
+    bad: 3
+  }, {
+    total: 8,
+    good: 5,
+    bad: 3
+  }, {
+    total: 9,
+    good: 6,
+    bad: 3
+  }, {
+    total: 10,
+    good: 6,
+    bad: 4
+  }];
+
+  const [gameConfig, setGameConfig] = useState({
     numOfPlayers: 0,
     characters: {
       merlin: 1,
@@ -77,7 +101,7 @@ export const App = () => {
     ladyOfTheLake: 0,
     limitDiscussion: 0,
     limitEndDiscussion: 0
-  }
+  });
 
   return (
     <div css={{ display: 'flex' }}>
@@ -144,12 +168,7 @@ export const App = () => {
             <h2 id="transition-modal-title">Game configurations</h2>
             <h3>Number of players</h3>
             <ButtonGroup color="secondary" aria-label="outlined secondary button group">
-              <Button data-num_of_players="5" onClick={setPlayers.bind(this)}>5</Button>
-              <Button data-num_of_players="6" onClick={setPlayers.bind(this)}>6</Button>
-              <Button data-num_of_players="7" onClick={setPlayers.bind(this)}>7</Button>
-              <Button data-num_of_players="8" onClick={setPlayers.bind(this)}>8</Button>
-              <Button data-num_of_players="9" onClick={setPlayers.bind(this)}>9</Button>
-              <Button data-num_of_players="10" onClick={setPlayers.bind(this)}>10</Button>
+              {teamConfig.map((team, i) => <Button key={i} variant={team.total === gameConfig.numOfPlayers ? 'contained' : 'outlined'} onClick={setPlayers(team.total)}>{team.total}</Button>)}
             </ButtonGroup>
             <h3>Characters</h3>
             <div>
