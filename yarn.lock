@@ -1384,6 +1384,13 @@
   dependencies:
     optional "0.1.4"
 
+"@nestjs/websockets@^6.10.1":
+  version "6.10.1"
+  resolved "https://registry.yarnpkg.com/@nestjs/websockets/-/websockets-6.10.1.tgz#271e0770ff7d33f85d8efd0ca338a45221b4e685"
+  integrity sha512-Gw/lztcu27Y1uTqUkds3IB12sT4kp59HxUCC5IhYqFnz3oGZkvI8+gX+LC33VDuorRXH+9DB338LoVJNZTyXbQ==
+  dependencies:
+    iterare "1.2.0"
+
 "@ngtools/webpack@8.3.14":
   version "8.3.14"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-8.3.14.tgz#ecac2651d2da7407f60acfb24ba03c460a79af1d"
